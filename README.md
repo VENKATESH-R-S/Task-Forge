@@ -15,6 +15,9 @@ Task Forge is a simple web application built with Flask, SQLAlchemy, and Flask-L
 
 ## Dependencies
 - Flask
+- SQLite3
+- HTML
+- CSS
 - SQLAlchemy
 - Flask-Login
 - Flask-WTF
