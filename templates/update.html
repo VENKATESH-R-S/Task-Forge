@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block body %}
+        
+    
+      <div class="container my-3" id="forms">
+        <form action="/update/{{tata.sno}}" method="POST">
+            <div class="mb-3">
+              <label for="title" class="form-label"><h3>Update your ToDo Title!</h3></label>
+              <input type="text" class="form-control" name="title" id="title" value="{{tata.title}}" aria-describedby="emailHelp" required>
+              <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+            <div class="mb-3">
+              <label for="desc" class="form-label"><h3>Update Description</h3></label>
+              <input type="text" class="form-control"name='desc' value="{{tata.desc}}" id="desc">
+            </div>
+            <button type="submit" class="btn btn-outline-warning">Update</button>
+          </form>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+      {% endblock body %}

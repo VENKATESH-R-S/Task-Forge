@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<div class="container mt-5">
+  <h1>Hello, future creator! ✨</h1>
+  <h4><strong>You're on the brink of transforming aspirations into achievements. Let's get started on your journey!"</strong></h4>
+</div>
+<!-- Register Form -->
+ <div class="container mt-4">
+  <h2>Register</h2>
+  <form method="POST" action="" id="register-form">
+    {{ form.hidden_tag() }}
+    <div class="form-group mt-2">
+      {{ form.username.label }}
+      {{ form.username(class="form-control",placeholder="Enter your Name") }}
+    </div>
+    <div class="form-group mt-2">
+      {{ form.email.label }}
+      {{ form.email(class="form-control",placeholder="Enter your Email") }}
+    </div>
+    <div class="form-group mt-2">
+      {{ form.password.label }}
+      {{ form.password(class="form-control",placeholder="Enter your password") }}
+    </div>
+    <div class="form-group mt-2">
+      {{ form.confirm_password.label }}
+      {{ form.confirm_password(class="form-control",placeholder="Confirm your password") }}
+    </div>
+    <div class="form-group mt-2">
+      {{ form.submit(class="btn btn-outline-warning") }}
+    </div>
+    <div class="container mt-2" id="url">
+      <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a>.</p>    </div>
+  </form>
+</div>
+{% endblock %}

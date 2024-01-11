@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block body %}
+
+        
+   <div class="container mt-5">
+    <h4>👋🏻 {% if current_user.is_authenticated %}
+      Hi, <strong>{{ current_user.username }}!</strong> 
+       {% endif %}</h4>
+      <h4>We're <strong>Task</strong> Forge.</h4>
+
+  
+    <!-- NOTE : - This line below was basically inspired from Cube Wealth about page. -->
+    <!-- <h2>"We're on a mission to streamline task management for busy individuals."</h2> -->
+    <h3>Drop your tasks below.🏆</h3>
+  </div>
+    
+      <div class="container mt-5 my-3" id="forms">
+        <form action="/" method="POST">
+            <div class="mb-3">
+              <label for="title" class="form-label"><h4>Task Title</h4></label>
+              <input type="text" placeholder="Title" class="form-control" name="title" id="title" aria-describedby="emailHelp"  required>
+            </div>
+            <div class="mb-3">
+              <label for="desc" class="form-label"><h4>Task Description</h4></label>
+              <input type="text" placeholder="Description" class="form-control"name='desc' id="desc">
+            </div>
+            <button type="submit" class="btn btn-outline-warning">ADD</button>
+          </form>
+      </div>
+          
+        
+      <div class="container my-5">
+        {% if alldata|length==0 %}
+        <div class="alert alert-warning" role="alert">
+          <strong>No Task is Found.</strong> -- <i>Drop your first Task!</i>
+          <!-- A simple warning alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like. -->
+        </div>
+         {% else %}
+         <caption> <h2>Tasks Pending...</h2>
+          <div class="loader-container">
+            <div class="loader"></div>
+          </div>
+          
+        </caption>
+        <!-- Table to store tasks -->
+        <table class="table table-dark">
+            <thead>
+              <tr>
+                <th scope="col">SNo</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Date&Time</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for data  in alldata %}
+                <div>
+                    <th scope="row">{{loop.index}}</th>
+                    <td>{{data.title}}</td>
+                    <td>{{data.desc}}</td>
+                    <td>{{data.date_created}}</td>
+                    <div class="container mx-1">
+                    <td><a href="/update/{{data.sno}}" type="button" class="btn btn-outline-warning btn-sm mx">Update</a></td>
+                  </div>
+                  <div class="container mx-1"></div>
+                    <td><a href="/delete/{{data.sno}}" type="button" class="btn btn-outline-warning btn-sm mx-1">Delete</a></td>
+                </div>
+                  </tr>
+                    
+                {% endfor %}
+            </tbody>
+          </table>
+          
+      {% endif %}
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+      {% endblock body %}
